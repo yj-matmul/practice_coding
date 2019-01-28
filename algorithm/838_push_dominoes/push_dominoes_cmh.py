@@ -37,7 +37,7 @@ def pushDominoes(self, dominoes):
                     right_num = check
                     flag = False
 
-                    # left 와 right 가 같으면 left or right 값
+             # left 와 right 가 같으면 left or right 값
             if left == right:
                 answer += right
 
