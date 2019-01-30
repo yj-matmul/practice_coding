@@ -5,34 +5,61 @@ def addTwoNumbers(self, l1, l2):
     :rtype: ListNode
     """
 
-    # 합계와 answer list 생성
-    sum = 0
-    answer = []
+    # Listnode 생성
+    dummy = current = ListNode(0)
 
-    # 10의 제곱 변수 설정
-    square1 = 0
-    square2 = 0
+    # check 변수 생성
+    check = 0
 
-    # l1, l2 마지막 node 까지 반복
-    while l1 != None or l2 != None:
-        # l1 node가 끝이 아니면
-        if l1 != None:
-            # sum에 해당 값 * 10의 자리수값 더함
-            sum += l1.val * (10 ** square1)
-            # l1의 10의 제곱 변수 + 1
-            square1 += 1
-            # l1 node를 다음 노드로 변경
-            l1 = l1.next
+    # l1, l2 끝까지 반복
+    while l1 and l2:
+        # 올림자리수와 l1 + l2 더한 result 변수 만들기
+        result = l1.val + l2.val + check
+        # 올림자리수 check 초기화
+        check = 0
+        # result가 10을 넘는경우
+        if result >= 10:
+            # check 1 변경
+            check = 1
+            # result - 10
+            result -= 10
+            # current의 다음 노드를 result 로 변경
+        current.next = ListNode(result)
 
-        # l1 과 동일
-        if l2 != None:
-            sum += l2.val * (10 ** square2)
-            square2 += 1
-            l2 = l2.next
+        # current, l1, l2 모두 다음 노드로 변경
+        current = current.next
+        l1 = l1.next
+        l2 = l2.next
 
-    # sum을 string 으로 변경 후 하나씩 answer 에 int로 append
-    for _ in str(sum):
-        answer.append(int(_))
+    # l1 이 남았을 경우 위와 같이 반복
+    while l1:
+        result = l1.val + check
+        check = 0
 
-    # 리스트의 역순으로 answer return
-    return answer[::-1]
+        if result >= 10:
+            check = 1
+            result -= 10
+
+        current.next = ListNode(result)
+        current = current.next
+        l1 = l1.next
+
+    # l2 이 남았을 경우 위와 같이 반복
+    while l2:
+        result = l2.val + check
+        check = 0
+
+        if result >= 10:
+            check = 1
+            result -= 10
+
+        current.next = ListNode(result)
+        current = current.next
+        l2 = l2.next
+
+    # 마지막 자리수가 올라갈때, 마지막 check 변수로 추가
+    if check == 1:
+        current.next = ListNode(1)
+
+    return dummy.next
+
