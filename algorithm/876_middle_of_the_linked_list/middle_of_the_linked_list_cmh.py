@@ -4,18 +4,19 @@ def middleNode(self, head):
     :rtype: ListNode
     """
 
-    # 답을 담을 list 생성
-    answer = []
+    # node를 count 할 변수 생성
+    cnt = 0
 
-    # 첫번째 head의 node를 저장
-    node = head
+    # head 복사
+    dummy = head
 
-    # node가 끝날때까지 반복
-    while node != None:
-        # node의 val를 answer에 저장
-        answer.append(node.val)
-        # node를 다음 node로 이동
-        node = node.next
+    # node를 count
+    while head:
+        cnt += 1
+        head = head.next
 
-    # answer의 반부터 출력
-    return (answer[(len(answer) // 2):])
+    # node의 수를 2로 나눈 몫 만큼 node를 건너띔
+    for cnt in range(cnt // 2):
+        dummy = dummy.next
+
+    return dummy
