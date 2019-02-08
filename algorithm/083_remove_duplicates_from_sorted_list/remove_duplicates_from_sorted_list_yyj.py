@@ -15,17 +15,16 @@ class Solution(object):
             keep = curr = head
 
             while curr != None:
-                # 마지막 노드에 다가갔을 경우
-                if curr.next is None:
-                    keep.next = None
-                    break
-                # 마지막 노드에 없는 경우
-                if curr.next.val == curr.val:
+                # 노드의 값이 반복될 때 curr만 다음으로 이동
+                if keep.val == curr.val:
                     curr = curr.next
                     continue
-                curr = curr.next
+                # 노드의 값이 반복되지 않을 때 keep에 마지막으로 반복된 노드를 할당
                 keep.next = curr
                 keep = curr
+                curr = curr.next
+            # 노드의 끝을 None으로 연결
+            keep.next = curr
 
             return head
 
