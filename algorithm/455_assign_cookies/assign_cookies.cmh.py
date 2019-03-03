@@ -18,6 +18,9 @@ def findContentChildren(self, g, s):
             if len(s) == 0:
                 break
 
+            if greed > s[-1]:
+                break
+
             # cookie 첫번째가 greed 보다 작으면
             if greed > s[0]:
                 # cookie 첫번째가 greed 보다 크고 len(s)가 1이 아닐때까지 pop(0)을 반복
