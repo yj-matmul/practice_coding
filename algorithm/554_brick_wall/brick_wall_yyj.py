@@ -5,7 +5,7 @@ class Solution:
             for idx in range(1, len(wall[n])):
                 wall[n][idx] += wall[n][idx - 1]
 
-        blank = {}  # 각 열마다 벽돌 사이 개수를 담을 hash
+        blank = {0: 0}  # 각 열마다 벽돌 사이 개수를 담을 hash
         for n in range(len(wall)):
             # 벽돌 맨 끝은 제외
             for idx in wall[n][:-1]:
@@ -14,9 +14,8 @@ class Solution:
                 else:
                     blank[idx] = 1
 
-        max_blank = 0  # 전체 열 중 벽돌 사이가 가장 빈 곳을 담을 변수
-        for key in blank.keys():
-            max_blank = max(max_blank, blank[key])
+        # 전체 열 중 벽돌 사이가 가장 빈 곳을 담을 변수
+        max_blank = max(blank.values())
 
         # 전체 층에서 벽돌 사이가 가장 많이 빈 곳을 빼줌
         return len(wall) - max_blank
