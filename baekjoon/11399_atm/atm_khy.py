@@ -11,6 +11,9 @@ print(sum(count))
 
 
 
+
+
+
 peoples = int(input())
 times = list(map(int, input().split()))
 
