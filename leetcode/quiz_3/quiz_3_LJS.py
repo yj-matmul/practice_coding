@@ -60,5 +60,4 @@ def solution(skills, total_sp):
     print(answer)
 
 
-
 solution(skills, total_sp)

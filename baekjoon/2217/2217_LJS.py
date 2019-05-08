@@ -1,5 +1,6 @@
 n = int(input())
 rope = []
+
 while n:
     rope.append(int(input()))
     n-=1

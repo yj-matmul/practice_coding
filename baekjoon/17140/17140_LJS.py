@@ -12,6 +12,7 @@ for tic in range(101):
         print(tic)
         check = 1
         break
+
     # r연산
     if n >= m:
         for i in range(1, n+1):
