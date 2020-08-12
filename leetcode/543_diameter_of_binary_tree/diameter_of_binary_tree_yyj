@@ -11,17 +11,17 @@ class Solution:
         left_path = 0
         right_path = 0
         path_list = []
-        max_path, path_list = self.postOrder(root, root, left_path, right_path, path_list)
+        max_path, path_list = self.postOrder(root, left_path, right_path, path_list)
 
         return max(path_list)
 
-    def postOrder(self, root, node, left_path, right_path, path_list):
+    def postOrder(self, node, left_path, right_path, path_list):
         left_max_path = 0
         right_max_path = 0
         if node.left:
-            left_max_path, path_list = self.postOrder(root, node.left, left_path, right_path, path_list)
+            left_max_path, path_list = self.postOrder(node.left, left_path, right_path, path_list)
         if node.right:
-            right_max_path, path_list = self.postOrder(root, node.right, left_path, right_path, path_list)
+            right_max_path, path_list = self.postOrder(node.right, left_path, right_path, path_list)
 
         path_list.append(left_max_path + right_max_path)
 
