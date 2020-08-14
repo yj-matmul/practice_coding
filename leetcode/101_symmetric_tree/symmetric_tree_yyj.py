@@ -27,9 +27,12 @@ class Solution:
         vals.append(node.val)
         if node.left:
             vals = self.leftInOrder(node.left, vals)
-
+        else:
+            vals.append('null')
         if node.right:
             vals = self.rightInOrder(node.right, vals)
+        else:
+            vals.append('null')
 
         return vals
 
@@ -37,7 +40,11 @@ class Solution:
         vals.append(node.val)
         if node.right:
             vals = self.rightInOrder(node.right, vals)
+        else:
+            vals.append('null')
         if node.left:
             vals = self.leftInOrder(node.left, vals)
+        else:
+            vals.append('null')
 
         return vals
